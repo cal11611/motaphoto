@@ -1,3 +1,20 @@
-
-
-
+[30-Apr-2026 04:02:27 UTC] Automatic updates starting...
+[30-Apr-2026 04:02:29 UTC] Automatic updates complete.
+[01-May-2026 04:48:54 UTC] Automatic updates starting...
+[01-May-2026 04:48:56 UTC] Automatic updates complete.
+[01-May-2026 09:30:51 UTC] Automatic updates starting...
+[01-May-2026 09:30:55 UTC] Automatic updates complete.
+[02-May-2026 04:38:50 UTC] Automatic updates starting...
+[02-May-2026 04:38:51 UTC] Automatic updates complete.
+[03-May-2026 04:07:57 UTC] Automatic updates starting...
+[03-May-2026 04:08:00 UTC] Automatic updates complete.
+[03-May-2026 08:37:58 UTC] Automatic updates starting...
+[03-May-2026 08:38:01 UTC] Automatic updates complete.
+[04-May-2026 04:40:40 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp\htdocs\motaphoto\wp-includes\class-wpdb.php on line 1994
+[04-May-2026 04:41:12 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp\htdocs\motaphoto\wp-includes\class-wpdb.php on line 1994
+[04-May-2026 04:54:55 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp\htdocs\motaphoto\wp-includes\class-wpdb.php on line 1994
+[04-May-2026 04:55:49 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp\htdocs\motaphoto\wp-includes\class-wpdb.php on line 1994
+[04-May-2026 05:09:26 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp\htdocs\motaphoto\wp-includes\class-wpdb.php on line 1994
+[04-May-2026 05:18:16 UTC] Automatic updates starting...
+[04-May-2026 05:18:18 UTC] Automatic updates complete.
+[04-May-2026 06:25:57 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting ")" in C:\xampp\htdocs\motaphoto\wp-content\themes\themeMotaPhoto\functions.php on line 35

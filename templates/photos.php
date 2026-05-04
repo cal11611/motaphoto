@@ -7,7 +7,7 @@ $args = [
 ];
 $query = new WP_Query($args);
 ?>
-<div class = "elem_deux">
+<div class = "two_columns">
 <?php
 if ($query->have_posts()) {
   while ($query->have_posts()) {
@@ -17,13 +17,13 @@ if ($query->have_posts()) {
     //the_title();
     ?>
    <?php
-	echo '<input type="hidden" name="activepost" id="activepost" value="'.get_the_permalink().'" />';
+	
   $link = get_the_permalink();
     ?>
     <a href = "<?php echo $link ?>"> 
     <?php the_post_thumbnail( 'medium' ); ?> 
     </a>
-    // Afficher champ ACF 
+    
   
     
 <?php
