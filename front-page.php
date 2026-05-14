@@ -8,6 +8,52 @@
         <h1 class = "ph_event">PHOTOHRAPHE EVENT</h1>    
     </header>
 <main>
-<?php get_template_part( 'templates/photos' ); ?>
+    <div class = "lists">
+        <div class="list_half list_half_left">
+        <?php $categories = get_categories(); ?>
+        <select name = "categories" id = "cat-select">
+            <option value = ""> Catégories </option>
+            <?php foreach($categories as $category) : ?>
+            <option value = "<?= esc_attr($category->slug); ?>" ><?= esc_html($category->name); ?></option>      
+            <?php endforeach; ?>
+        </select>
+
+        <?php $posttags = get_tags(); ?>
+     
+        <select name = "formats" id = "format-select">
+            <option value = ""> Formats </option>
+            <?php foreach($posttags as $tag) : ?>
+            <option value="<?= esc_attr($tag->slug); ?>"><?= esc_html($tag->name); ?></option>   
+            <?php endforeach; ?>
+            
+        </select>
+        </div>
+        <div class="list_half list_half_right">
+        <select name = "tri" id = "tri-select">
+            <option value = "" > Trier par </option>
+        </select>
+        </div>
+        
+    </div>
+    <?php 
+$args = [
+    'post_type' => 'photo',
+    'category_name' => '',
+    'posts_per_page' => 8,
+    'orderby' => 'date',
+    'order' => 'ASC'
+];
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
+  echo '<div class="two_columns" id="ajax_return">';
+  while ($query->have_posts()) : $query->the_post();
+    get_template_part('template_parts/content', 'photo');
+  endwhile;
+  echo '</div>';
+endif;
+
+wp_reset_postdata();
+?>
 </main>
 <?php get_footer() ?>
