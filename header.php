@@ -26,7 +26,7 @@
             <div id = "nav_header_div1_mobile">
                 <div id = "logo_mobile">
                     <a href="<?php echo esc_url( home_url('/') ); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/img/logo.png'; ?>">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/img/logo.png'; ?>" alt="Logo">
                     </a>
                 </div>
                 <div id="icon_mobile">

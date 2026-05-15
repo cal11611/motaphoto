@@ -31,29 +31,35 @@
         <div class="list_half list_half_right">
         <select name = "tri" id = "tri-select">
             <option value = "" > Trier par </option>
+            <option value = "asc" > + ancien au + récent </option>
+            <option value = "desc" > + récent au + ancien </option>
         </select>
         </div>
         
     </div>
     <?php 
-$args = [
-    'post_type' => 'photo',
-    'category_name' => '',
-    'posts_per_page' => 8,
-    'orderby' => 'date',
-    'order' => 'ASC'
-];
-$query = new WP_Query($args);
+    $args = [
+        'post_type'      => 'photo',
+        'posts_per_page' => 8,
+        'orderby'        => 'date',
+        'order'          => 'ASC',
+        'paged'          => 1,
+    ];
+    $query = new WP_Query($args);
 
-if ($query->have_posts()) :
-  echo '<div class="two_columns" id="ajax_return">';
-  while ($query->have_posts()) : $query->the_post();
-    get_template_part('template_parts/content', 'photo');
-  endwhile;
-  echo '</div>';
-endif;
+    if ($query->have_posts()) :
+    echo '<div class="two_columns" id="ajax_return">';
+    while ($query->have_posts()) : $query->the_post();
+        get_template_part('template_parts/content', 'photo');
+    endwhile;
+    echo '</div>';
+    endif;
 
-wp_reset_postdata();
-?>
+    wp_reset_postdata();
+    ?>
+
+    <div class="chargerPlus">
+    <button class="chargerPlusBtn" id="load-more">Charger plus</button>
+    </div>
 </main>
 <?php get_footer() ?>

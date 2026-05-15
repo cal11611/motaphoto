@@ -48,13 +48,21 @@ fa_custom_setup_kit('https://kit.fontawesome.com/83e08ef1b5.js');
 
 function photo_request_photos() {
     $catSlug = $_POST['category'] ?? '';
+    $tagSlug = $_POST['tag'] ?? '';
+    
     $args = [
         'post_type' => 'photo',
         'posts_per_page' => 8,
+        'orderby'        => 'date',
+        'order'          => 'ASC',
     ];
     if ($catSlug) {
         $args['category_name'] = $catSlug;
     }
+    if ($tagSlug) {
+        $args['tag'] = $tagSlug;
+    }
+    
     
     $query = new WP_Query($args);
     
@@ -79,9 +87,63 @@ function photo_request_photos() {
 add_action('wp_ajax_request_photos', 'photo_request_photos');
 add_action('wp_ajax_nopriv_request_photos', 'photo_request_photos');
 
+
+function load_more_photos() {
+    $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+    $posts_per_page = 8;
+
+    $args = [
+        'post_type'      => 'photo',
+        'posts_per_page' => $posts_per_page,
+        'paged'          => $paged,
+        'orderby'        => 'date',
+        'order'          => 'ASC',
+    ];
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        $html = '';
+        while ($query->have_posts()) {
+            $query->the_post();
+            ob_start();
+            get_template_part('template_parts/content', 'photo');
+            $html .= ob_get_clean();
+        }
+
+        $is_last_page = ($paged >= $query->max_num_pages);
+
+        wp_reset_postdata();
+
+        wp_send_json_success([
+            'html'         => $html,
+            'is_last_page' => $is_last_page,
+        ]);
+    } else {
+        wp_send_json_success([
+            'html'         => '',
+            'is_last_page' => true,
+        ]);
+    }
+
+    wp_die();
+}
+add_action('wp_ajax_load_more', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
+
 function photo_scripts() {
     wp_enqueue_script('photo', get_template_directory_uri() . '/js/photo.js', array('jquery'), '1.0.0', true);
     wp_localize_script('photo', 'photo_js', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'photo_scripts');
+
+
+
+function custom_dynamic_meta_tags() {
+  if (is_home() || is_front_page()) {
+    echo '<meta name="title" content="Mota Photo">' . "\n";
+    echo '<meta name="description" content="Mota Photo la pro de la photo">' . "\n";
+  }
+}
+add_action('wp_head', 'custom_dynamic_meta_tags');
 ?>

@@ -83,6 +83,25 @@ header .ph_event {
     -webkit-text-fill-color: rgba(0,0,0,0);
     color: #fff;
 }
+/***************************charger +***************************/
+.chargerPlus {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.chargerPlusBtn {
+    width: 272px;
+    height: 50px;
+    background-color: var(--gray0);
+    font-family: Space Mono;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0px 2px 1px 0px #00000005;
+    border: var(--gray0);
+    cursor: pointer;
+}
 /*****************************icons*****************************/
 .bigger {
     position: absolute;
@@ -321,6 +340,9 @@ select option:hover {
     font-family: Space Mono;
     font-size: 12px;
     font-weight: 400;
+    box-shadow: 0px 2px 1px 0px #00000005;
+    background-color: var(--gray0);
+    border: var(--gray0);
 }
 .single_posts_related {
     max-width: 1440px;
