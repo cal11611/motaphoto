@@ -2,18 +2,18 @@
 <div class="moitie">
   <a href="<?php the_permalink(); ?>">
     <?php 
-      // Récupère le titre du post pour l'attribut alt
+      // Titre et id
       $alt_text = get_the_title();
+      $id = get_the_id();
 
-      // Affiche la miniature avec l'attribut alt personnalisé
       echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', ['alt' => esc_attr($alt_text)]); 
     ?>
   </a>
-
-  <div class="bigger child-element">
+  <!-- id lightbox -->
+  <div class="bigger child-element" id = "<?php echo $id; ?>">
     <i class="fa-solid fa-expand"></i>
   </div>
-  <div class="eye child-element">
+  <div class="eye child-element" >
     <i class="fa-regular fa-eye"></i>
   </div>
   <div class="infos">

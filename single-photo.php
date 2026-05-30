@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <main>
+    
 <div class="main_single">
     <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
@@ -77,7 +78,7 @@ endif;
 
 wp_reset_postdata();
 ?>
-        
+     
         
         
         

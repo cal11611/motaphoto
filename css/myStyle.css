@@ -1,9 +1,7 @@
 body {
     margin: 0;
-    font-family: poppins; 
-      
+    font-family: poppins;      
 }
-
 ul {
     list-style-type: none;
 }
@@ -83,6 +81,89 @@ header .ph_event {
     -webkit-text-fill-color: rgba(0,0,0,0);
     color: #fff;
 }
+/***************************lightbox****************************/
+.lightbox {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 299;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox_image {
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.9);
+  transition: transform 2s ease;
+  overflow: hidden;
+}
+.lightbox_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  
+}
+.lightbox_visible {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox_visible .lightbox_image {
+  transform: scale(1);
+}
+#prev-photo, #next-photo, #close-photo {
+  position: fixed;
+  top: 50%;
+  z-index: 399;
+  cursor: pointer;
+  background:var(--gray0);
+  border: none;
+  color: white;
+  padding: 0.5em 1em;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  user-select: none;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+#prev-photo {
+  left: 1%;
+  transform: translateY(-50%);
+}
+#next-photo {
+  right: 1%;
+  transform: translateY(-50%);
+}
+#close-photo {
+  top: 2%;
+  right: 5%;
+  transform: none;
+}
+#prev-photo:hover, #next-photo:hover, #close-photo:hover {
+  background: var(--gray2);
+}
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 /***************************charger +***************************/
 .chargerPlus {
     height: 80px;
@@ -112,6 +193,7 @@ header .ph_event {
     border-radius: 50%;
     padding: 5px;
     display: none;
+    cursor:nwse-resize;
 }
 .eye {
     position: absolute;
@@ -119,8 +201,8 @@ header .ph_event {
     left: 48%;
     color: #fff;
     font-size: 30px;
-    
     display: none;
+    cursor:help;
 }
 #fa-moi, #fa-moi-mobile {
     font-size: 30px;
@@ -134,9 +216,8 @@ header .ph_event {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background: rgba(0, 0, 0, 0.1);
-    visibility: hidden;
-        
+    background: rgba(0, 0, 0, 0);
+    visibility: hidden;        
 }
 .visible {
     visibility: visible;
@@ -156,13 +237,10 @@ header .ph_event {
     height: 60px;
     margin: auto;
     box-shadow: 0px 4px 14px 10px #00000008;
-
-
 }
 #nav_header_div1 {
     width: 300px;
 }
-
 #nav_header_div1 img {
     width: 216px;
     height: 14px;
@@ -171,7 +249,6 @@ header .ph_event {
 #nav_header_div1_mobile {
     display: none;
 }
-
 #nav_header_div2 ul {
     display: flex;
     flex-direction: row;
@@ -193,8 +270,6 @@ header .ph_event {
 #icon {
   display: none;
 }
-
-
 /*****************************popup*****************************/
 #contact {
     width: 46%;
@@ -231,9 +306,7 @@ header .ph_event {
     float: right;
     cursor: pointer;
 }
-
 /*************************listes déroulantes********************/
-
 .lists {
     width: 100%;
     height: 100px;
@@ -257,8 +330,20 @@ select {
     height: 30px;
     border-radius: 8px;
 }
-select option:hover {
-  background-color: #f0f0f0;
+/* Option normale */
+.select2-results__option {
+  background-color: white;
+  color: black;
+}
+/* Option sélectionnée */
+.select2-results__option--selected {
+  background-color: var(--red0) !important;
+  color: white;
+}
+/* Option au survol */
+.select2-results__option--highlighted {
+  background-color: var(--red1) !important;
+  color: black;
 }
 /******************************m img****************************/
 .two_columns {
@@ -386,6 +471,7 @@ select option:hover {
 .swiper-button-prev::after {
     content: url("../img/LineL.png") !important;
 }
+/**************************************************************/
 /* Small devices (phones, less than 768px) */
 @media (max-width: 767.98px) {
     main {
@@ -402,9 +488,9 @@ select option:hover {
         flex-direction: column;
     }
     .moitie {
-        width: 100%;       
-    }
-    
+        width: 96%;
+        margin: auto;       
+    }   
 /****************************single**************************/
     .post-title {
         font-size: 46px;
@@ -416,7 +502,7 @@ select option:hover {
         width: 100%;
     }
     .single_infos {
-        height: 280px;
+        height: 340px;
     }
     .single_contact {
         flex-direction: column;
@@ -452,7 +538,6 @@ select option:hover {
         justify-content: space-between; 
         height: 72px;      
     }
-
     #nav_header_div1 {
         width: 100%;
         height: 72px;
@@ -527,8 +612,7 @@ select option:hover {
     }
 /*********************************************************************/
     #nav_footer {
-        height: 120px;
-        
+        height: 120px;    
     }
     #nav_footer ul{
     width: 100%;
@@ -537,10 +621,16 @@ select option:hover {
     } 
 /*************************listes déroulantes********************/ 
     .lists {
+        margin-top: 20px;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .lists, .list_half {
     flex-direction: column;
+    gap: 10px;
     }
     .list_half {
-        flex-direction: column;
         width: 100%;
     }
     select {

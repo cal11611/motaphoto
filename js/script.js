@@ -15,7 +15,7 @@ $(document).ready(function($) {
     });
 
 });
-
+// Récupére la référence get_field('reference') dans single-photo pour l'inclure dans le form
 if (document.getElementById('hide')){
   var ref = document.getElementById('hide').value;
   document.querySelector("input[name=your-subject]").value = ref;
@@ -34,13 +34,14 @@ jQuery(document).ready(function($) {
 });
 
 // swiperJs
+jQuery(document).ready(function($) {
 var swiper = new Swiper(".mySwiper", {
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
     });
-
+  });
 // eye et bigger au survol de la div
 
 jQuery(document).ready(function($) {
@@ -65,3 +66,16 @@ jQuery(document).ready(function($) {
   );
 });
 
+// select2
+$(document).ready(function($) {
+  $('select').select2({
+    // options si besoin
+  });
+});
+
+// masque fléches navigation sur single
+jQuery(document).ready(function($) {
+  if (pageData.isSingle) {
+    $('#prev-photo, #next-photo').hide();
+  }
+});

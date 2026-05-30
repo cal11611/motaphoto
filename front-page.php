@@ -11,7 +11,7 @@
     <div class = "lists">
         <div class="list_half list_half_left">
         <?php $categories = get_categories(); ?>
-        <select name = "categories" id = "cat-select">
+        <select name = "categories" id = "category-select">
             <option value = ""> Catégories </option>
             <?php foreach($categories as $category) : ?>
             <option value = "<?= esc_attr($category->slug); ?>" ><?= esc_html($category->name); ?></option>      
@@ -20,7 +20,7 @@
 
         <?php $posttags = get_tags(); ?>
      
-        <select name = "formats" id = "format-select">
+        <select name = "formats" id = "tag-select">
             <option value = ""> Formats </option>
             <?php foreach($posttags as $tag) : ?>
             <option value="<?= esc_attr($tag->slug); ?>"><?= esc_html($tag->name); ?></option>   
@@ -29,7 +29,7 @@
         </select>
         </div>
         <div class="list_half list_half_right">
-        <select name = "tri" id = "tri-select">
+        <select name = "tri" id = "order-select">
             <option value = "" > Trier par </option>
             <option value = "asc" > + ancien au + récent </option>
             <option value = "desc" > + récent au + ancien </option>
@@ -41,6 +41,8 @@
     $args = [
         'post_type'      => 'photo',
         'posts_per_page' => 8,
+        'category'       => '',
+        'tag'            => '',
         'orderby'        => 'date',
         'order'          => 'ASC',
         'paged'          => 1,
@@ -61,5 +63,6 @@
     <div class="chargerPlus">
     <button class="chargerPlusBtn" id="load-more">Charger plus</button>
     </div>
+    
 </main>
 <?php get_footer() ?>
