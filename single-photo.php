@@ -35,7 +35,7 @@
             <p class="single-info">
                 Année :  <?php the_time('Y'); ?>
             </p>
-    </div>
+        </div>
     </div>
     <div class="single_portrait">
     <?php the_post_thumbnail( 'medium' ); ?>

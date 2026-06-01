@@ -23,7 +23,7 @@
             </div>
         </div>
         <div id = "nav_header_div2"> <!--comprend le menu poussé à droite et apparait en js au clic sur icon sur mobile -->
-            <div id = "nav_header_div1_mobile"> // display none 
+            <div id = "nav_header_div1_mobile"> <!-- display none -->
                 <div id = "logo_mobile">
                     <a href="<?php echo esc_url( home_url('/') ); ?>">
                     <img src="<?php echo get_stylesheet_directory_uri() . '/img/logo.png'; ?>" alt="Logo">
