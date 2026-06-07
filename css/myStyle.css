@@ -575,6 +575,7 @@ select {
         height: 72px;
         flex-direction: row;
         justify-content: space-around;
+        background-color: white;
     }
     #nav_header img {
         width: 138px;
