@@ -5,8 +5,8 @@
       // Titre et id
       $alt_text = get_the_title();
       $id = get_the_id();
-
-      echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', ['alt' => esc_attr($alt_text)]); 
+    
+      echo get_the_post_thumbnail(get_the_ID(), 'medium', ['alt' => esc_attr($alt_text)]); 
     ?>
   </a>
   <!-- id lightbox -->

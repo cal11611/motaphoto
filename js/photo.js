@@ -48,6 +48,46 @@ jQuery(document).ready(function($) {
     $('#next-photo').prop('disabled', currentIndex >= photoIds.length - 1);
   }
 
+  // Gestion lightbox avec événements délégués sur contenu dynamique 
+  
+  function setupLightboxEvents() {
+    // Ouverture lightbox sur clic .bigger (contenu dynamique ou initial)
+    $('main').on('click', '.bigger', function(event) {
+      event.preventDefault();
+      $('.lightbox').addClass('lightbox_visible');
+
+      let myId = parseInt($(this).attr('id'));
+      currentIndex = photoIds.indexOf(myId);
+
+      loadPhoto(myId);
+    });
+  }
+
+  setupLightboxEvents();
+
+  // Fermeture lightbox
+  $('#close-photo').on('click', function() {
+    $('.lightbox').removeClass('lightbox_visible');
+    $('#ajax_image_return').empty();
+  });
+
+  // Navigation lightbox
+  $('#prev-photo').on('click', function() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      loadPhoto(photoIds[currentIndex]);
+    }
+  });
+
+  $('#next-photo').on('click', function() {
+    if (currentIndex < photoIds.length - 1) {
+      currentIndex++;
+      loadPhoto(photoIds[currentIndex]);
+    }
+  });
+
+  
+/**************************************************************************/
   // Chargement photos selon filtres
   // Variables d'état filtres
   let currentCategory = '';
@@ -121,45 +161,6 @@ jQuery(document).ready(function($) {
 
   // Initialisation : chargement des photos lors du chargement de la page
   loadPhotos();
-
-  // Gestion lightbox avec événements délégués sur contenu dynamique 
-  
-  function setupLightboxEvents() {
-    // Ouverture lightbox sur clic .bigger (contenu dynamique ou initial)
-    $('main').on('click', '.bigger', function(event) {
-      event.preventDefault();
-      $('.lightbox').addClass('lightbox_visible');
-
-      let myId = parseInt($(this).attr('id'));
-      currentIndex = photoIds.indexOf(myId);
-
-      loadPhoto(myId);
-    });
-  }
-
-  setupLightboxEvents();
-
-  // Fermeture lightbox
-  $('#close-photo').on('click', function() {
-    $('.lightbox').removeClass('lightbox_visible');
-    $('#ajax_image_return').empty();
-  });
-
-  // Navigation lightbox
-  $('#prev-photo').on('click', function() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      loadPhoto(photoIds[currentIndex]);
-    }
-  });
-
-  $('#next-photo').on('click', function() {
-    if (currentIndex < photoIds.length - 1) {
-      currentIndex++;
-      loadPhoto(photoIds[currentIndex]);
-    }
-  });
-
   // Gestion des animations en hover sur contenu rechargé
   function ajaxReturn() {
     $('#ajax_return').on('mouseenter', '.moitie', function() {

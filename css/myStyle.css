@@ -318,6 +318,7 @@ header .ph_event {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 5px;
 }
 .list_half_left {
     justify-content: space-between;
@@ -327,8 +328,14 @@ header .ph_event {
 }
 select {
     width: 45%;
-    height: 30px;
     border-radius: 8px;
+}
+.select2-container--default .select2-selection--single {
+  height: 40px !important; /* hauteur souhaitée */
+  line-height: 40px !important; /* pour centrer verticalement le texte */
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 40px !important;
 }
 /* Option normale */
 .select2-results__option {
@@ -486,6 +493,9 @@ select {
 /******************************m img****************************/
     .two_columns {
         flex-direction: column;
+        width: 96%;
+        margin-right: 3%;
+        margin-left: 3%;
     }
     .moitie {
         width: 96%;
@@ -497,6 +507,9 @@ select {
     }
     .main_single {
         flex-direction: column-reverse;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
         .single_infos, .single_portrait {
         width: 100%;
@@ -536,14 +549,18 @@ select {
     #nav_header {
         flex-direction: column;
         justify-content: space-between; 
-        height: 72px;      
+        height: 72px; 
+        width: 100%;     
     }
     #nav_header_div1 {
         width: 100%;
         height: 72px;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
+        width: 88%;
+        margin-left: 6%;
+        margin-right: 6%;
     }
     #nav_header_div2 {
         position: fixed;
@@ -558,7 +575,6 @@ select {
         height: 72px;
         flex-direction: row;
         justify-content: space-around;
-        background-color: white;
     }
     #nav_header img {
         width: 138px;
@@ -623,6 +639,7 @@ select {
     .lists {
         margin-top: 20px;
         width: 96%;
+        height: 130px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -632,9 +649,9 @@ select {
     }
     .list_half {
         width: 100%;
+        margin-top: 0;
     }
     select {
         width: 80%;
-        height: 38px;
     }
 }

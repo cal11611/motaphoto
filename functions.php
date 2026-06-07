@@ -9,6 +9,7 @@ add_action('after_setup_theme', 'register_my_menu');
 // image en avant
 add_theme_support('post-thumbnails');
 
+
 // enléve la navigation sur lightbox single
 function single_enleve_navigation() {
     wp_enqueue_script('single-enleve-navigation', get_template_directory_uri() . '/js/script.js', ['jquery'], '1.0', true);
